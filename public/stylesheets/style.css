@@ -1,0 +1,60 @@
+.container{
+  padding:16px;
+
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: rgb(16, 20, 39);
+  height: 400px;
+  border-radius: 10rem 2rem;
+  align-content: center;
+  box-shadow: 5px red;
+
+}
+
+#heading{
+  padding: 8px;
+  margin-left: 30%;
+  margin-right: 25%;
+  color: aliceblue;
+  margin-bottom: 0;
+}
+#message{
+  padding: 8px;
+  margin-left: 30%;
+  margin-right: 25%;
+  color: aliceblue;
+}
+
+.input{
+  padding: 8px;
+  margin-top: 4px;
+  margin-left: 30%;
+  margin-right: 25%;
+  width: 50%;
+  margin-bottom: 8px;
+  border-radius: 5rem;
+}
+
+.sendbtn{
+  margin-left: 40%;
+  margin-right: 25%;
+  padding:4px;
+  width:30%;
+  background-color: rgb(236, 60, 60);
+  box-shadow: 10px;
+  border-radius: 2rem;
+}
+
+.sendbtn:active, .sendbtn:hover{
+  background-color: aliceblue;
+}
+
+#passwordmessage{
+  display: none;
+  color:red;
+}
+#passwordmessage.visible{
+  display: block;
+}
+

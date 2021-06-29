@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/jquery-3.5.1.js" defer></script>
+    <script src="/javascripts/main.js" defer></script>
+    <title>RichStore</title>
+</head>
+<body>
+
+      
+    <div class="container">
+      <h1 id="heading">Welcome</h1>
+      <p id="message"> Sign-in to our system</p>
+      <p id="passwordmessage"> password does not match</p>
+      <div>
+      <form method="POST" action="/register" >
+            <input class="input" name="username" type="text" placeholder="Username"  required>
+        
+         
+            <input  class="input" name="email"  type="email" placeholder="Email"  required>
+        
+    
+         
+            <input class="input" name="password" id="password1" type="password" placeholder="Password" required>
+       
+    
+        
+            <input class="input" name="password1" id="password2" type="password" placeholder="confirm Password " required>
+    
+             <input class="sendbtn" type="submit">
+          
+            </form>
+      </div>
+   </div>
+
+
+</body>
+</html>

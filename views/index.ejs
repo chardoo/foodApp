@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>azumahStore</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="/stylesheets/shared.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/element.css">
+    <script src="/javascripts/jquery-3.5.1.js" defer></script>
+    <script src="/javascripts/shared.js" defer></script>
+    <script src="/javascripts/cart.js" defer></script>
+
+</head>
+
+<body>
+
+   <!-- modal for cartpage -->
+    <div class="backdrop"></div>
+    <div class="modal">
+        <h1 class="modal__title">Cart Page </h1>
+       <%  if(mycart.length==0){ %>
+         <h1 style="align-self: center; margin-left: 25%; margin-right: 25%; justify-content: center; color: red;">  No food added yet! </h1>
+         <%} else {   %>
+       
+        <div class="modal__actions">
+          
+            <% mycart.forEach(function(cart) { %>
+            <li class="cartPage"></li>
+            <div class="itemspage">
+                <div>
+                <img src="<%= cart.url %>">
+                </div>
+                <h2 class="itemspage-title"><%= cart.name %> </h2>
+                <h3 class="itemspage-price"><%= cart.price %>  </h3> 
+                <h3 class="qtypage"> <%= cart.qty  %>   </h3>
+                <h3 class="subpage"> <%= cart.price*cart.qty  %>   </h3>
+               </div>
+                <% total +=(cart.price*cart.qty)  %>
+          </li>
+          <% }) %>
+             <div>
+                <h1> Total GHC <span> <%= total %>  </span> </h1> 
+             </div>
+            <form action="/checkout/<%= total %>" method="POST">
+            <button class="modal__action" >ChecKOut!</button>
+            </form>
+            <button class="modal__action modal__action--negative" type="button">Cancel</button>
+            <%  }  %>
+        </div>
+    </div>
+    
+
+ <!-- detials modal -->
+    <div class="backdrop1"></div>
+    <div class="modal1">
+        <h1 class="modal__title1">Item Detials </h1>
+        <div id="container98">
+
+        </div>
+           
+
+           
+
+       
+    </div>
+
+    <header class="main-header">
+        <div>
+            <button class="toggle-button">
+                <span class="toggle-button__bar"></span>
+                <span class="toggle-button__bar"></span>
+                <span class="toggle-button__bar"></span>
+            </button>
+            <a href="/all" class="main-header__brand">
+                <img src="images/martin6.PNG" alt="uHost - Your favorite hosting company">
+            </a>
+        </div>
+     
+        <!-- <input id="searchitem" type="text" placeholder="search any item ">
+        -->
+        <nav class="main-nav">
+            <ul class="main-nav__items">
+                <li class="main-nav__item">
+                    <a href="/"><%= today %> Menu</a>
+                </li>
+                <li class="main-nav__item">
+                    <a href="/optional">Optional</a>
+                </li>
+                <li class="main-nav__item">
+                    <a href="/all">All Food</a>
+                </li>
+                <!-- <li class="main-nav__item">
+                    <a href="/car">Cars</a>
+                </li>
+                -->
+                <li class="main-nav__item main-nav__item--cta">
+                    <a id = "mycart" >MyCart</a>
+                </li>
+                <% if(ifLogIn != true) { %>
+                <li class="main-nav__item main-nav__item--cta">
+                    <a href="/log/signUp">SignUp</a>
+                </li>
+                <li class="main-nav__item main-nav__item--cta">
+                    <a href="/log/login">Login</a>
+                </li>
+                <%  } %>
+            </ul>
+        </nav>
+    </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__items">
+            <li class="mobile-nav__item">
+                <a href="/Decoration">Decoration</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a href="/homeappliances">Home Appliance</a>
+            </li>
+            <li class="mobile-nav__item mobile-nav__item--cta">
+                <a href="/cars">Cars</a>
+            </li>
+            <li class="mobile-nav__item mobile-nav__item--cta">
+                <a href="/decor">classics</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section class="menuslider">
+           <div class="row1">
+            <!-- <div class="column1 left1" style="background-color:#aaa;">
+                <h2>Menu</h2>
+                 <div style=" margin-top: 5px; text-decoration: none;">
+                <a class="item" href="/all">All Category</a>
+                <a class="item" href="/decoration">Decoration</a>
+                <a class="item" href="/homecat">Appliances</a>
+                <a class="item" href="/cars">Cars</a>
+                </div>
+            </div> -->
+               <div class="column1 right1"  >
+                   <div class="welpassage">
+                  <h1> allDae's Restaurant </h1>
+                 </div>
+                </div>
+            </div>
+        </section>
+       
+        <section class="products"> 
+            <% data.forEach(function(items) { %>
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img id="imageurl" src="<%= items.url %>">
+                    </div>
+                    <div class="product-info">
+                      <h5 id="name"><%= items.name %></h5>
+                      <P id="desc"> <%= items.description %>  </P>
+                      <h6 id="price"> <span> GHC </span><%= items.price %></h6>
+                      <h6 id="price"> <span>  </span><%= items.day %></h6>
+                      <h7 id="itemid" style="display: none;" >  <%= items._id %>   </h7>
+                    </div>
+                  </div>  
+                  <% }) %>
+                  
+                  
+
+         </section>
+    </main>
+    <footer class="main-footer">
+        <nav>
+            <ul class="main-footer__links">
+                <li class="main-footer__link">
+                    <a href="#">Support</a>
+                </li>
+                <li class="main-footer__link">
+                    <a href="#">Terms of Use</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+    
+</body>
+
+</html>

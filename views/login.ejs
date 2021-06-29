@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/jquery-3.5.1.js" defer></script>
+    <script src="/javascripts/main.js" defer></script>
+    <title>RichStore</title>
+</head>
+<body>
+
+      
+    <div class="container">
+      <h1 id="heading">Welcome</h1>
+      <p id="message"> Login to your Office</p>
+       <p style="margin-left: 25%; margin-right: 25%; color: red; font-size: larger;"> <%= message %>  </p>
+       
+         <div>
+           <form method="POST"  action="/auth">
+        <input class="input" name="email" type="email" placeholder="email" required>
+    
+
+        <input class="input" name="password"  type="password" placeholder="Password" required>
+
+        <input class="sendbtn" type="submit">
+      </form>
+      </div>
+      </div>
+
+
+</body>
+</html>
